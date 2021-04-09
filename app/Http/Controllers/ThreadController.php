@@ -10,11 +10,12 @@ class ThreadController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $threads = Thread::latest()->get();
+        return view('threads.index', compact('threads'));
     }
 
     /**
@@ -38,15 +39,16 @@ class ThreadController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
+     * @param Thread $thread
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Thread $thread)
     {
-        //
+        return view('threads.show', compact('thread'));
     }
 
     /**
